@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ThemeProvider } from '@material-ui/core/styles';
-
-import Root from './components/Root';
-
-import theme from './theme';
+import { Root } from './core';
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Root />
-    </ThemeProvider>
+    <Root />
   </React.StrictMode>,
   document.getElementById('app'),
 );

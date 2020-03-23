@@ -6,10 +6,8 @@ export default () => {
       },
       body: {
         margin: 0,
+        fontFamily: 'Roboto, sans-serif',
       },
-    },
-    root: {
-      fontFamily: 'Roboto, sans-serif',
     },
   };
 };
