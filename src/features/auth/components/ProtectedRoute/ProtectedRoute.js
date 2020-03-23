@@ -1,11 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
-import { selectIsAuthorized } from '../../selectors';
+import { useIsAuthorized } from '../../hooks';
 
 function ProtectedRoute({ children, ...rest }) {
-  const isAuthorized = useSelector(selectIsAuthorized);
+  const isAuthorized = useIsAuthorized();
+
+  console.log('isAuthorized', isAuthorized);
 
   return (
     <Route

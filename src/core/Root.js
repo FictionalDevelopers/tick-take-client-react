@@ -3,7 +3,7 @@ import { Provider as ReactReduxProvider } from 'react-redux';
 
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
-import Routes from './Routes';
+import App from './App';
 
 import store from './store';
 import theme from './theme';
@@ -18,7 +18,7 @@ function Root() {
   return (
     <ReactReduxProvider store={store}>
       <ThemeProvider theme={theme}>
-        <Routes />
+        <App />
       </ThemeProvider>
     </ReactReduxProvider>
   );
