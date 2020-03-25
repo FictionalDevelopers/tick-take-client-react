@@ -1,6 +1,7 @@
 export default function selectIsAuthorized(state) {
   const {
-    auth: { currentUser },
+    auth: { token },
   } = state;
-  return currentUser.id !== null && currentUser.id !== undefined;
-}
+
+  return token !== null;
+};
