@@ -15,14 +15,14 @@ import { TOKEN_STORAGE_KEY } from './constants';
 export function login({ email, password }) {
   return async dispatch => {
     try {
-      const { data: token } = await apiClient.post('/auth/login', {
+      const { data: { token, user } } = await apiClient.post('/auth/login', {
         email,
         password,
       });
 
       storage.setItem(TOKEN_STORAGE_KEY, token);
 
-      return dispatch(loginSucceeded({ token }));
+      return dispatch(loginSucceeded({ token, user }));
     } catch (error) {
       const payload = error.response ? error.response.data : { error: error.message };
 
@@ -36,7 +36,7 @@ export function login({ email, password }) {
 export function register({ name, email, password, passwordConfirm }) {
   return async dispatch => {
     try {
-      const { data: token } = await apiClient.post('/auth/register', {
+      const { data: { token, user } } = await apiClient.post('/auth/register', {
         name,
         email,
         password,
@@ -45,7 +45,7 @@ export function register({ name, email, password, passwordConfirm }) {
 
       storage.setItem(TOKEN_STORAGE_KEY, token);
 
-      return dispatch(registrationSucceeded({ token }));
+      return dispatch(registrationSucceeded({ token, user }));
     } catch (error) {
       const payload = error.response ? error.response.data : { error: error.message };
 
