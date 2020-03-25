@@ -18,7 +18,9 @@ export function login({ email, password }) {
     } catch (error) {
       const payload = error.response ? error.response.data : { error: error.message };
 
-      return dispatch(loginFailed(payload));
+      dispatch(loginFailed(payload));
+
+      throw payload;
     }
   };
 }
