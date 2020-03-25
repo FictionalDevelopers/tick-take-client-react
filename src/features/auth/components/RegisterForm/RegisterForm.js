@@ -1,29 +1,43 @@
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 import { Link as RouterLink } from 'react-router-dom';
+import _get from 'lodash/fp/get';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
 import { FormField } from '@app/common/components';
-import { composeValidators, email, required } from '@app/common/utils/validation';
+import { composeValidators, email, equalsTo, minLength, notEmpty, required } from '@app/common/utils/validation';
 
-import { useLogin } from '../../hooks';
+import { useRegister } from '../../hooks';
 
 import styles from './styles';
 
 const useStyles = makeStyles(styles);
 
+const validateName = composeValidators(required, notEmpty);
 const validateEmail = composeValidators(required, email);
+const validatePassword = composeValidators(required, minLength(3));
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const classes = useStyles();
-  const login = useLogin();
+  const register = useRegister();
 
   const render = ({ handleSubmit, submitting }) => {
     return (
       <form onSubmit={handleSubmit}>
+        <div className={classes.field}>
+          <Field
+            name="name"
+            type="text"
+            label="Name"
+            variant="outlined"
+            component={FormField}
+            validate={validateName}
+            fullWidth
+          />
+        </div>
         <div className={classes.field}>
           <Field
             name="email"
@@ -42,16 +56,26 @@ export default function LoginForm() {
             label="Password"
             variant="outlined"
             component={FormField}
-            validate={required}
+            validate={validatePassword}
             fullWidth
           />
         </div>
+        <div className={classes.field}>
+          <Field
+            name="passwordConfirm"
+            type="password"
+            label="Password confirmation"
+            variant="outlined"
+            component={FormField}
+            validate={equalsTo(_get('password'), { message: 'Passwords dont\'t match' })}
+            fullWidth
+          /></div>
         <div className={classes.footer}>
-          <Link to="/register" component={RouterLink}>
-            I don't have an account
+          <Link to="/login" component={RouterLink}>
+            I have an account
           </Link>
           <Button disabled={submitting} type="submit" variant="contained" color="primary">
-            Sign me in
+            Sign me up
           </Button>
         </div>
       </form>
@@ -61,9 +85,9 @@ export default function LoginForm() {
   return (
     <Form
       render={render}
-      onSubmit={async ({ email, password }) => {
+      onSubmit={async ({ name, email, password, passwordConfirm }) => {
         try {
-          await login({ email, password });
+          await register({ name, email, password, passwordConfirm });
         } catch (error) {
           return error;
         }

@@ -4,6 +4,7 @@
   "private": true,
   "workspaces": [
     "src/core",
+    "src/config",
     "src/common",
     "src/features"
   ],

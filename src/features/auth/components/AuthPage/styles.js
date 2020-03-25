@@ -7,7 +7,7 @@ export default ({ breakpoints, spacing }) => {
       height: '100vh',
     },
     content: {
-      transform: 'translateY(-50%)',
+      transform: 'translateY(-20%)',
       width: '90%',
 
       [breakpoints.up('sm')]: {

@@ -1,6 +1,14 @@
 import { apiClient, storage } from '@app/common/utils';
 
-import { loggedOut, loginFailed, loginSucceeded, tokenFound, tokenNotFound } from './actions';
+import {
+  loggedOut,
+  loginFailed,
+  loginSucceeded,
+  registrationFailed,
+  registrationSucceeded,
+  tokenFound,
+  tokenNotFound,
+} from './actions';
 
 import { TOKEN_STORAGE_KEY } from './constants';
 
@@ -19,6 +27,29 @@ export function login({ email, password }) {
       const payload = error.response ? error.response.data : { error: error.message };
 
       dispatch(loginFailed(payload));
+
+      throw payload;
+    }
+  };
+}
+
+export function register({ name, email, password, passwordConfirm }) {
+  return async dispatch => {
+    try {
+      const { data: token } = await apiClient.post('/auth/register', {
+        name,
+        email,
+        password,
+        passwordConfirm,
+      });
+
+      storage.setItem(TOKEN_STORAGE_KEY, token);
+
+      return dispatch(registrationSucceeded({ token }));
+    } catch (error) {
+      const payload = error.response ? error.response.data : { error: error.message };
+
+      dispatch(registrationFailed(payload));
 
       throw payload;
     }

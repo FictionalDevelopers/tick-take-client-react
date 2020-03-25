@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@app/config": "1.0.0",
     "axios": "^0.19.2",
     "email-validator": "^2.0.4",
     "final-form": "^4.18.7",

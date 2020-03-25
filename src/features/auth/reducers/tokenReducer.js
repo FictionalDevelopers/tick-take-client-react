@@ -1,6 +1,6 @@
-import { createReducer,  } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 
-import { loginSucceeded, tokenFound, loggedOut } from '../actions';
+import { loggedOut, loginSucceeded, registrationSucceeded, tokenFound } from '../actions';
 
 const initialState = null;
 
@@ -9,6 +9,7 @@ const setToken = (state, { payload }) => {
 };
 
 export default createReducer(initialState, {
+  [registrationSucceeded]: setToken,
   [loginSucceeded]: setToken,
   [tokenFound]: setToken,
   [loggedOut]: (state) => {

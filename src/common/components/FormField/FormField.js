@@ -21,6 +21,7 @@ FormField.propTypes = {
   input: PropTypes.shape({}).isRequired,
   meta: PropTypes.shape({
     touched: PropTypes.bool.isRequired,
+    dirtySinceLastSubmit: PropTypes.bool.isRequired,
     error: PropTypes.any,
     submitError: PropTypes.any,
   }).isRequired,
