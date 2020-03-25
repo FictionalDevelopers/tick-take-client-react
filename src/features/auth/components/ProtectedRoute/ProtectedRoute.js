@@ -6,8 +6,6 @@ import { useIsAuthorized } from '../../hooks';
 function ProtectedRoute({ children, ...rest }) {
   const isAuthorized = useIsAuthorized();
 
-  console.log('isAuthorized', isAuthorized);
-
   return (
     <Route
       {...rest}
