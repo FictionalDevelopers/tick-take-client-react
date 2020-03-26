@@ -37,8 +37,7 @@ function Section({ title, defaultClosed, classes: parentClasses, children }) {
         />
       </ButtonBase>
       <div
-        data-stuff={collapseRef.current}
-        style={{ maxHeight: maxHeight }}
+        style={{ maxHeight }}
         className={cn(classes.collapse, {
           [classes.collapseHidden]: isOpen,
         })}

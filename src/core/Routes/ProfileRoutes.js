@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
+import Typography from '@material-ui/core/Typography';
+
 import { Layout } from '@app/features/profile';
 
 function ProfileRoutes() {
@@ -10,10 +12,19 @@ function ProfileRoutes() {
     <Switch>
       <Layout>
         <Route exact path={path}>
-          <h1>Profile dashboard</h1>
+          <Typography variant="h1">Profile dashboard</Typography>
         </Route>
         <Route path={`${path}/lots`}>
-          <h1>Lots page</h1>
+          <Typography variant="h1">Lots page</Typography>
+        </Route>
+        <Route path={`${path}/auctions`}>
+          <Typography variant="h1">Auctions page</Typography>
+        </Route>
+        <Route path={`${path}/info`}>
+          <Typography variant="h1">Profile info page</Typography>
+        </Route>
+        <Route path={`${path}/security`}>
+          <Typography variant="h1">Profile security page</Typography>
         </Route>
       </Layout>
     </Switch>
