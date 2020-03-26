@@ -1,7 +1,7 @@
+import selectToken from './selectToken';
+
 export default function selectIsAuthorized(state) {
-  const {
-    auth: { token },
-  } = state;
+  const token = selectToken(state);
 
   return token !== null;
 };

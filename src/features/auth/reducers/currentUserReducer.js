@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { loginSucceeded, registrationSucceeded, loggedOut } from '../actions';
+import { currentUserFetchSucceeded, loggedOut, loginSucceeded, registrationSucceeded } from '../actions';
 
 const initialState = {};
 
@@ -11,5 +11,6 @@ const setUser = (state, { payload }) => {
 export default createReducer(initialState, {
   [loginSucceeded]: setUser,
   [registrationSucceeded]: setUser,
+  [currentUserFetchSucceeded]: setUser,
   [loggedOut]: () => ({}),
 });

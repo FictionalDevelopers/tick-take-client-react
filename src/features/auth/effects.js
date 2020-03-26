@@ -1,6 +1,9 @@
+import { batch } from 'react-redux';
 import { apiClient, storage } from '@app/common/utils';
 
 import {
+  currentUserFetchFailed,
+  currentUserFetchSucceeded,
   loggedOut,
   loginFailed,
   loginSucceeded,
@@ -9,6 +12,8 @@ import {
   tokenFound,
   tokenNotFound,
 } from './actions';
+
+import { selectToken } from './selectors';
 
 import { TOKEN_STORAGE_KEY } from './constants';
 
@@ -56,11 +61,34 @@ export function register({ name, email, password, passwordConfirm }) {
   };
 }
 
+export function getCurrentUser() {
+  return async (dispatch, getState) => {
+    try {
+      const token = selectToken(getState());
+
+      const { data: user } = await apiClient.get('/auth/current', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return dispatch(currentUserFetchSucceeded({ user }));
+    } catch (error) {
+      const payload = error.response ? error.response.data : { error: error.message };
+
+      return dispatch(currentUserFetchFailed(payload));
+    }
+  };
+}
+
 export function checkToken() {
   return dispatch => {
     const token = storage.getItem(TOKEN_STORAGE_KEY);
     if (token) {
-      return dispatch(tokenFound({ token }));
+      return batch(() => {
+        dispatch(tokenFound({ token }));
+        dispatch(getCurrentUser());
+      });
     }
 
     return dispatch(tokenNotFound({}));

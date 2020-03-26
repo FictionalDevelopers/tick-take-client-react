@@ -11,4 +11,7 @@ export const loginFailed = createAction(`${MODULE}/LOGIN_FAILED`);
 export const registrationSucceeded = createAction(`${MODULE}/REGISTRATION_SUCCEEDED`);
 export const registrationFailed = createAction(`${MODULE}/REGISTRATION_FAILED`);
 
+export const currentUserFetchSucceeded = createAction(`${MODULE}/CURRENT_USER_FETCH_SUCCEEDED`);
+export const currentUserFetchFailed = createAction(`${MODULE}/CURRENT_USER_FETCH_FAILED`);
+
 export const loggedOut = createAction(`${MODULE}/LOGGED_OUT`);

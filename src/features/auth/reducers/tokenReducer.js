@@ -1,6 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { loggedOut, loginSucceeded, registrationSucceeded, tokenFound } from '../actions';
+import {
+  currentUserFetchFailed,
+  loggedOut,
+  loginSucceeded,
+  registrationSucceeded,
+  tokenFound,
+} from '../actions';
 
 const initialState = null;
 
@@ -12,7 +18,6 @@ export default createReducer(initialState, {
   [registrationSucceeded]: setToken,
   [loginSucceeded]: setToken,
   [tokenFound]: setToken,
-  [loggedOut]: (state) => {
-    return null;
-  },
+  [currentUserFetchFailed]: () => null,
+  [loggedOut]: () => null,
 });
