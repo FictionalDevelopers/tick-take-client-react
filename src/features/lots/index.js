@@ -1,0 +1,1 @@
+export { LotCreationPage } from './pages';

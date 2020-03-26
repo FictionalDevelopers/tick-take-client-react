@@ -1,7 +1,7 @@
 const SIDEBAR_WIDTH = 150;
-const HEADER_HEIGHT = 50;
+const HEADER_HEIGHT = 60;
 
-export default () => {
+export default ({ spacing }) => {
   return {
     root: {},
     header: {
@@ -9,7 +9,7 @@ export default () => {
       height: HEADER_HEIGHT,
       flexDirection: 'row',
       alignItems: 'center',
-      padding: [[0, 10]],
+      padding: [[0, spacing(2)]],
       justifyContent: 'flex-end',
     },
     sidebar: {
@@ -21,6 +21,6 @@ export default () => {
       marginTop: HEADER_HEIGHT,
       minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
       padding: [[50, 30, 20]],
-    }
+    },
   };
 };
