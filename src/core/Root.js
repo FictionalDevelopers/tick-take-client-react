@@ -1,23 +1,19 @@
 import React from 'react';
 import { Provider as ReactReduxProvider } from 'react-redux';
 
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import App from './App';
 
 import store from './store';
 import theme from './theme';
 
-import styles from './styles';
-
-const useStyles = makeStyles(styles);
-
 function Root() {
-  useStyles();
-
   return (
     <ReactReduxProvider store={store}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <App />
       </ThemeProvider>
     </ReactReduxProvider>
