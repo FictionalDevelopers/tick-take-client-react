@@ -20,7 +20,7 @@ export default ({ spacing }) => {
       marginLeft: SIDEBAR_WIDTH,
       marginTop: HEADER_HEIGHT,
       minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
-      padding: [[50, 30, 20]],
+      padding: [[30, 30, 20]],
     },
   };
 };

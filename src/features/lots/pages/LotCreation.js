@@ -1,7 +1,11 @@
 import React from 'react';
 
-import Typography from '@material-ui/core/Typography';
+import { Layout, LotCreationForm } from '../components';
 
 export default function LotCreation() {
-  return <Typography variant="h1">Lot creation page</Typography>
+  return (
+    <Layout title="New lot">
+      <LotCreationForm />
+    </Layout>
+  );
 }
