@@ -9,6 +9,7 @@ export const createLot = ({ name, description }) => async (dispatch, getState, {
     dispatch(lotCreationSucceeded(lot));
     return dispatch(push(`/profile/lots/${lot._id}`));
   } catch (error) {
+    console.log(error);
     const payload = error.response ? error.response.data : { error: error.message };
 
     dispatch(lotCreationFailed(payload));
