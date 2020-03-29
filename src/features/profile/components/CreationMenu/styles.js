@@ -1,5 +1,4 @@
 export default ({ palette, typography }) => {
-  console.log(palette);
   return {
     root: {},
     trigger: {},
