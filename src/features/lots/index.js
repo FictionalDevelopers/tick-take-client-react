@@ -1,1 +1,1 @@
-export { LotCreationPage } from './pages';
+export { LotCreationPage, LotDetailsPage } from './pages';

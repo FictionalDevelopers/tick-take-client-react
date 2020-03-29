@@ -57,7 +57,7 @@ export default function LotCreationForm({ classes: cl }) {
   return (
     <Form
       render={render}
-      onSubmit={async ({ name, description }) => {
+      onSubmit={async ({ name, description }, { reset }) => {
         try {
           await dispatch(createLot({ name, description }));
         } catch (error) {
