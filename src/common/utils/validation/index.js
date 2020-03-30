@@ -5,3 +5,4 @@ export { default as email } from './email';
 export { default as minLength } from './minLength';
 export { default as notEmpty } from './notEmpty';
 export { default as equalsTo } from './equalsTo';
+export { default as requiredNotEmpty } from './requiredNotEmpty';
