@@ -16,7 +16,7 @@ import styles from './styles';
 
 const useStyles = makeStyles(styles);
 
-const validateName = composeValidators(required, notEmpty);
+const validateName = composeValidators(required, notEmpty());
 const validateEmail = composeValidators(required, email);
 const validatePassword = composeValidators(required, minLength(3));
 
