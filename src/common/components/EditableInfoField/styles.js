@@ -26,6 +26,7 @@ export default ({ palette, shape, transitions }) => {
       padding: 10,
     },
     content: {
+      whiteSpace: 'pre-wrap',
       '&:focus': {
         outline: 'none',
       },

@@ -4,7 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 
 import { Layout } from '@app/features/profile';
-import { LotCreationPage, LotDetailsPage } from '@app/features/lots';
+import { LotCreationPage, LotDetailsPage, LotListPage } from '@app/features/lots';
 
 function ProfileRoutes() {
   const { path } = useRouteMatch();
@@ -16,7 +16,7 @@ function ProfileRoutes() {
           <Typography variant="h1">Profile dashboard</Typography>
         </Route>
         <Route exact path={`${path}/lots`}>
-          <Typography variant="h1">Lots page</Typography>
+          <LotListPage />
         </Route>
         <Route path={`${path}/lots/new`}>
           <LotCreationPage />
