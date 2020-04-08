@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import pipe from 'lodash/fp/pipe';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import { normalizeField, normalizeMultilineField, textToHtml } from './normalize';
+import { normalizeField, normalizeMultilineField } from './normalize';
 
 import styles from './styles';
 
@@ -67,9 +66,10 @@ export default function EditableInfoField({ onSuccess, initialValue, onFail, val
         <div
           ref={inputRef}
           contentEditable={isEditMode}
-          dangerouslySetInnerHTML={{ __html: pipe(normalize, textToHtml)(initialValue) }}
           className={classes.content}
-        />
+        >
+          {normalize(initialValue)}
+        </div>
       </div>
       <div className={cn(classes.actions, {
         [classes.editActions]: isEditMode,

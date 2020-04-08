@@ -1,3 +1,3 @@
-export { LotCreationPage, LotDetailsPage } from './pages';
+export { LotCreationPage, LotDetailsPage, LotListPage } from './pages';
 
 export { default as reducer } from './reducers';

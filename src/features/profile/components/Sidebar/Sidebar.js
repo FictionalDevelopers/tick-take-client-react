@@ -43,6 +43,16 @@ export default function Sidebar(props) {
           to={{
             pathname: `${url}/lots`,
             query: {
+              status: 'available',
+            },
+          }}
+        >
+          Available
+        </SidebarLink>
+        <SidebarLink
+          to={{
+            pathname: `${url}/lots`,
+            query: {
               status: 'in_sale',
             },
           }}
